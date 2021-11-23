@@ -7,7 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class KeyboardComponent implements OnInit {
   
-  @Output() onClickEvent = new EventEmitter<any>();
+  @Output() onClickEvent = new EventEmitter<string | number>();
 
   constructor() { }
 

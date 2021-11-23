@@ -1,0 +1,9 @@
+<table class="calculator">
+    <tr>
+        <td colspan="3">
+            <app-display [displayMessage]="display"></app-display>
+        </td>
+    </tr>
+        <!-- clearScreen() function clear all the values -->
+<app-keyboard (onClickEvent)="onClick($event)"></app-keyboard>
+</table>

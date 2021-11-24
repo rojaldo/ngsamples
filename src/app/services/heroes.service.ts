@@ -1,22 +1,25 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Hero } from 'src/model/hero';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroesService {
 
-  private heroes: string[] = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado'];
-  heroes$ = new BehaviorSubject<string[]>(this.heroes);
+  // heroes and description
+  private heroes: Hero[] = [ new Hero('Superman', 'Man of Steel'), new Hero('Batman', 'Dark Knight')];
+
+  heroes$ = new BehaviorSubject<Hero[]>(this.heroes);
 
   constructor() { }
 
-  addHero(newHeroName: string) {
-    this.heroes.push(newHeroName);
+  addHero(newHero: Hero) {
+    this.heroes.push(newHero);
     this.heroes$.next(this.heroes);
   }
 
-  getHeroes(): string[] {
+  getHeroes(): Hero[] {
     return this.heroes;
   }
   

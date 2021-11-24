@@ -8,6 +8,8 @@ import { DisplayComponent } from './components/calculator/display/display.compon
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeroesComponent } from './components/heroes/heroes/heroes.component';
 import { FormsModule } from '@angular/forms';
+import { HeroesListComponent } from './components/heroes/heroes-list/heroes-list.component';
+import { HeroFormComponent } from './components/heroes/hero-form/hero-form.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { FormsModule } from '@angular/forms';
     CalculatorComponent,
     KeyboardComponent,
     DisplayComponent,
-    HeroesComponent
+    HeroesComponent,
+    HeroesListComponent,
+    HeroFormComponent
   ],
   imports: [
     BrowserModule, NgbModule, FormsModule

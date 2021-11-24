@@ -15,10 +15,15 @@ export class CalculatorComponent implements OnInit {
   constructor(private service: CalculatorService) { }
 
   ngOnInit(): void {
+    this.service.display$.subscribe(
+      (value) => {
+        this.display = value;
+      }
+    );
   }
 
   onClick(myValue: string | number) {
-    this.display = this.service.process(myValue);
+    this.service.process(myValue);
   }
 
 

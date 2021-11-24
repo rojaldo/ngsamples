@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 enum State {
   INIT,
@@ -7,9 +8,7 @@ enum State {
   RESULT
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CalculatorService {
 
   private currentState = State.INIT;
@@ -19,6 +18,7 @@ export class CalculatorService {
   private result: number = 0;
 
   private display = '';
+  public display$ = new BehaviorSubject<string>(this.display);
 
   constructor() { }
 
@@ -28,15 +28,18 @@ export class CalculatorService {
       case State.INIT:
         this.firstFigure = value;
         this.display += value.toString();
+        this.display$.next(this.display);
         this.currentState = State.FIRST_FIGURE;
         break;
       case State.FIRST_FIGURE:
         this.firstFigure = this.firstFigure * 10 + value;
         this.display += value.toString();
+        this.display$.next(this.display);
         break;
       case State.SECOND_FIGURE:
         this.secondFigure = this.secondFigure * 10 + value;
         this.display += value.toString();
+        this.display$.next(this.display);
         break;
       case State.RESULT:
         this.firstFigure = value;
@@ -44,6 +47,7 @@ export class CalculatorService {
         this.operator = '';
         this.result = 0;
         this.display = value.toString();
+        this.display$.next(this.display);
         this.currentState = State.FIRST_FIGURE;
         break;
     }
@@ -76,6 +80,7 @@ export class CalculatorService {
     this.operator = '';
     this.result = 0;
     this.display = '';
+    this.display$.next(this.display);
     this.currentState = State.INIT;
   }
 
@@ -90,6 +95,7 @@ export class CalculatorService {
         if (this.isOperator(value)) {
           this.operator = value;
           this.display += value;
+          this.display$.next(this.display);
           this.currentState = State.SECOND_FIGURE;
         }
         break;
@@ -97,6 +103,7 @@ export class CalculatorService {
         if (value === '=') {
           this.result = this.getResult();
           this.display += value + this.result.toString();
+          this.display$.next(this.display);
           this.currentState = State.RESULT;
         }
         break;
@@ -107,6 +114,7 @@ export class CalculatorService {
           this.secondFigure = 0;
           this.result = 0;
           this.display = this.firstFigure.toString() + value;
+          this.display$.next(this.display);
           this.currentState = State.SECOND_FIGURE;
         }
         break;
@@ -114,13 +122,12 @@ export class CalculatorService {
 
   }
 
-  public process(myValue: string | number): string {
+  public process(myValue: string | number){
     if (typeof myValue === 'string') {
       this.handleSymbol(myValue);
     } else if (typeof myValue === 'number') {
       this.handleNumber(myValue);
     }
-    return this.display;
   }
 
 }

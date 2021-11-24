@@ -14,12 +14,12 @@ export class HeroesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.heroes = this.service.getHeroes();
+    this.service.heroes$.subscribe(heroes => this.heroes = heroes);
 
   }
 
   addHero(newHeroName: string) {
-    this.heroes = this.service.addHero(newHeroName);
+    this.service.addHero(newHeroName);
   }
 
 }

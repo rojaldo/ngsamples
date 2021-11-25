@@ -6,18 +6,18 @@ import * as moment from 'moment';
 @Injectable()
 export class ApodService {
 
-  private APIKEY = 'DEMO_KEY';
+  private APIKEY = 'tqz634Z1x0LiJzjbhSyUoExrZaGKLM0MG1VnROR6';
   private apod: any = {};
   apod$ = new BehaviorSubject<any>(this.apod);
 
   constructor(private http: HttpClient) { }
 
   getApod(date?: string): void {
-    if (date) {
+    if (date && moment(date).isValid()) {
       this.doRequest(date);
     } else {
       const today = moment().format('YYYY-MM-DD');
-      console.log(today);
+      console.log('ApodService' + today);
       if (this.apod.date && this.apod.date === today) {
         this.apod$.next(this.apod);
       } else {

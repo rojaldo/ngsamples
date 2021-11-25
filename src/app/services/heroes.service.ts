@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Hero } from 'src/model/hero';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class HeroesService {
 
   // heroes and description

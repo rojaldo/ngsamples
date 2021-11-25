@@ -12,25 +12,38 @@ export class ApodService {
 
   constructor(private http: HttpClient) { }
 
-  getApod(): void {
-    const today = moment().format('YYYY-MM-DD');
-    console.log(today);
-    if (this.apod.date && this.apod.date === today) {
-      this.apod$.next(this.apod);
+  getApod(date?: string): void {
+    if (date) {
+      this.doRequest(date);
     } else {
-      this.doRequest();
+      const today = moment().format('YYYY-MM-DD');
+      console.log(today);
+      if (this.apod.date && this.apod.date === today) {
+        this.apod$.next(this.apod);
+      } else {
+        this.doRequest();
+      }
+
     }
   }
 
-  private doRequest(): void {
-    this.http.get(`https://api.nasa.gov/planetary/apod?api_key=${this.APIKEY}`).subscribe(
-      data => {
-        this.apod = data;
-        this.apod$.next(this.apod);
-        console.log(data);
-      }, error => {
-        console.log(error);
-      }
-    );
+  private doRequest(date?: string): void {
+    if (date) {
+      this.http.get(`https://api.nasa.gov/planetary/apod?api_key=${this.APIKEY}&date=${date}`)
+        .subscribe(data => {
+          this.apod = data;
+          this.apod$.next(this.apod);
+        });
+    } else {
+      this.http.get(`https://api.nasa.gov/planetary/apod?api_key=${this.APIKEY}`).subscribe(
+        data => {
+          this.apod = data;
+          this.apod$.next(this.apod);
+          console.log(data);
+        }, error => {
+          console.log(error);
+        }
+      );
+    }
   }
 }

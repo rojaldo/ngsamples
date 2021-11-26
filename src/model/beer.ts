@@ -20,5 +20,10 @@ export class Beer {
     getImageUrl(): string {
         return this.imageUrl;
     }
+
+    setName(name: string): void {
+        this.name = name;
+    }
+    
     
 }

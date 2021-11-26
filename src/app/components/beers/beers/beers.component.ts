@@ -26,13 +26,17 @@ export class BeersComponent implements OnInit {
   ngOnInit(): void {
     this.service.beers$.subscribe(data => {
       this.beers = data;
-      this.filteredBeers = this.beers.filter(beer => beer.getAbv() >= this.minValue && beer.getAbv() <= this.maxValue);
+      this.filteredBeers = this.beers.
+        filter(beer => beer.getAbv() >= this.minValue && beer.getAbv() <= this.maxValue).
+        sort((a, b) => a.getAbv() - b.getAbv());
     });
     this.service.getBeers();
   }
 
   valueChange(): void {
-    this.filteredBeers = this.beers.filter(beer => beer.getAbv() >= this.minValue && beer.getAbv() <= this.maxValue);
+    this.filteredBeers = this.beers.
+      filter(beer => beer.getAbv() >= this.minValue && beer.getAbv() <= this.maxValue).
+      sort((a, b) => a.getAbv() - b.getAbv());
   }
 
 }

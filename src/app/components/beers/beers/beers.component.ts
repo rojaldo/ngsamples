@@ -13,8 +13,10 @@ export class BeersComponent implements OnInit {
   beers: Beer[] = [];
   filteredBeers: Beer[] = [];
 
+  searchString = '';
   minValue: number = 4;
   maxValue: number = 5;
+
   options: Options = {
     floor: 0,
     ceil: 60,
@@ -26,17 +28,30 @@ export class BeersComponent implements OnInit {
   ngOnInit(): void {
     this.service.beers$.subscribe(data => {
       this.beers = data;
-      this.filteredBeers = this.beers.
-        filter(beer => beer.getAbv() >= this.minValue && beer.getAbv() <= this.maxValue).
-        sort((a, b) => a.getAbv() - b.getAbv());
+      this.filterArray();
     });
     this.service.getBeers();
   }
 
-  valueChange(): void {
-    this.filteredBeers = this.beers.
+  filterArray(): Beer[] {
+    if(this.searchString.length > 0) {
+      this.filteredBeers = this.beers.filter(beer => beer.getName().toLowerCase().startsWith(this.searchString.toLowerCase()));
+    } else {
+      this.filteredBeers = this.beers;
+    }
+    return this.filteredBeers = this.filteredBeers.
       filter(beer => beer.getAbv() >= this.minValue && beer.getAbv() <= this.maxValue).
       sort((a, b) => a.getAbv() - b.getAbv());
+
+  }
+
+  valueChange(): void {
+    this.filterArray();
+  }
+
+  handleFilter(value: string): void {
+    this.searchString = value;
+    this.filterArray();
   }
 
 }

@@ -1,6 +1,11 @@
+<div class="form-group">
+  <label for="">Beer Name</label>
+  <input type="text"
+    class="form-control" #searchNameInput name="" id="" aria-describedby="helpId" placeholder="" (keyup)="handleFilter(searchNameInput.value)">
+</div>
 <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (userChange)="valueChange()"></ngx-slider>
 <div class="row mt-4">
     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4" *ngFor="let beer of filteredBeers">
-        <app-beer-card [beer]="beer"></app-beer-card>
+        <app-beer-card [beer]="beer" #card></app-beer-card>
     </div>
 </div>

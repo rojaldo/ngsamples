@@ -1,13 +1,6 @@
 <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (userChange)="valueChange()"></ngx-slider>
 <div class="row mt-4">
     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4" *ngFor="let beer of filteredBeers">
-        <div class="card h-100 pt-3">
-            <img class="card-img-top d-block mx-auto" [src]="beer.getImageUrl()" alt="" style="width: 60px">
-            <div class="card-body">
-                <h4 class="card-title">{{beer.getName()}}</h4>
-                <p class="card-text">{{beer.getAbv()}}</p>
-                <p class="card-text">{{beer.getTagline()}}</p>
-            </div>
-        </div>
+        <app-beer-card [beer]="beer"></app-beer-card>
     </div>
 </div>

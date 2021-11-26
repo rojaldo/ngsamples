@@ -6,7 +6,7 @@ import * as moment from 'moment';
 @Injectable()
 export class ApodService {
 
-  private APIKEY = 'tqz634Z1x0LiJzjbhSyUoExrZaGKLM0MG1VnROR6';
+  private APIKEY = 'DEMO_KEY';
   private apod: any = {};
   apod$ = new BehaviorSubject<any>(this.apod);
 

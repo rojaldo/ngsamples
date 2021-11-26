@@ -20,6 +20,7 @@ import { ApodShowComponent } from './components/apod/apod-show/apod-show.compone
 import { ApodPickerComponent } from './components/apod/apod-picker/apod-picker.component';
 import { BeersComponent } from './components/beers/beers/beers.component';
 import { BeersService } from './services/beers.service';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { BeersService } from './services/beers.service';
     BeersComponent
   ],
   imports: [
-    BrowserModule, NgbModule, FormsModule, HttpClientModule, YouTubePlayerModule
+    BrowserModule, NgbModule, FormsModule, HttpClientModule, YouTubePlayerModule, NgxSliderModule
   ],
   providers: [CalculatorService, HeroesService, ApodService, BeersService],
   bootstrap: [AppComponent]

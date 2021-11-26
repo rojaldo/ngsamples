@@ -1,7 +1,6 @@
 <div class="form-group">
   <label for="">Beer Name</label>
-  <input type="text"
-    class="form-control" #searchNameInput name="" id="" aria-describedby="helpId" placeholder="" (keyup)="handleFilter(searchNameInput.value)">
+  <input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search"/>
 </div>
 <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (userChange)="valueChange()"></ngx-slider>
 <div class="row mt-4">

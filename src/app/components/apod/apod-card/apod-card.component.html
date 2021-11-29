@@ -1,0 +1,11 @@
+<div class="card p-2 h-100">
+    <img *ngIf="apod.media_type === 'image'" [src]="apod.url" [alt]="apod.title" class="img-fluid d-block mx-auto w-100" style="width: 190px;">
+    <div class="d-flex justify-content-center">
+        <youtube-player *ngIf="apod.media_type === 'video'" [videoId]="getVideoId(apod.url)"></youtube-player>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">{{apod.title}}</h4>
+        <p class="card-text">{{apod.date}}</p>
+    </div>
+</div>
+

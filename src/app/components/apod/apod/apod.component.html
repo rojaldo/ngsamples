@@ -3,5 +3,11 @@
 </div>
 
 
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4" *ngFor="let apod of apodArray">
+            <app-apod-card [apod]="apod"></app-apod-card>        
+    </div>
+</div>
 
-<app-apod-show [date]="selectedDate"></app-apod-show>
+
+

@@ -10,15 +10,19 @@ import * as moment from 'moment';
 export class ApodComponent implements OnInit {
 
   selectedDate = '';
-  
-  constructor() { }
+  apodArray: any[] = [];
+
+  constructor(private service: ApodService) { }
 
   ngOnInit(): void {
+    this.service.apodArray$.subscribe(
+      apods => { this.apodArray = apods });
   }
 
   dateChanged(date: any) {
     console.log('ApodComponent: ' + date.year + '-' + date.month + '-' + date.day);
-    this.selectedDate =  date.year + '-' + date.month + '-' + date.day;
+    this.selectedDate = date.year + '-' + date.month + '-' + date.day;
+    this.service.getApod(this.selectedDate);
   }
 
 

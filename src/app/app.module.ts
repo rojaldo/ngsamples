@@ -23,6 +23,7 @@ import { BeersService } from './services/beers.service';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { BeerCardComponent } from './components/beers/beer-card/beer-card.component';
 import { AbvPipe } from './pipes/abv.pipe';
+import { ApodCardComponent } from './components/apod/apod-card/apod-card.component';
 
 @NgModule({
   declarations: [
@@ -38,12 +39,13 @@ import { AbvPipe } from './pipes/abv.pipe';
     ApodPickerComponent,
     BeersComponent,
     BeerCardComponent,
-    AbvPipe
+    AbvPipe,
+    ApodCardComponent
   ],
   imports: [
     BrowserModule, NgbModule, FormsModule, HttpClientModule, YouTubePlayerModule, NgxSliderModule
   ],
-  providers: [CalculatorService, HeroesService, ApodService, BeersService],
+  providers: [CalculatorService, HeroesService, BeersService, ApodService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

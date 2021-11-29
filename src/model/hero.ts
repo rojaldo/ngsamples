@@ -10,6 +10,13 @@ export class Hero {
         return this.description;
     }
 
+    getAlterEgo(): string {
+        if (this.alterEgo) {
+            return this.alterEgo;
+        }
+        return '';
+    }
+
     emptyDescription(): boolean {
         return this.description.length === 0;
     }

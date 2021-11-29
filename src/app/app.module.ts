@@ -24,6 +24,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { BeerCardComponent } from './components/beers/beer-card/beer-card.component';
 import { AbvPipe } from './pipes/abv.pipe';
 import { ApodCardComponent } from './components/apod/apod-card/apod-card.component';
+import { TemplateFormComponent } from './components/forms/template-form/template-form.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ApodCardComponent } from './components/apod/apod-card/apod-card.compone
     BeersComponent,
     BeerCardComponent,
     AbvPipe,
-    ApodCardComponent
+    ApodCardComponent,
+    TemplateFormComponent
   ],
   imports: [
     BrowserModule, NgbModule, FormsModule, HttpClientModule, YouTubePlayerModule, NgxSliderModule

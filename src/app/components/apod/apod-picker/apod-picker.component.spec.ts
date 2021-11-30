@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ApodPickerComponent } from './apod-picker.component';
 
-describe('ApodPickerComponent', () => {
+xdescribe('ApodPickerComponent', () => {
   let component: ApodPickerComponent;
   let fixture: ComponentFixture<ApodPickerComponent>;
 

@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { YourGuard } from './your.guard';
 
-describe('YourGuard', () => {
+xdescribe('YourGuard', () => {
   let guard: YourGuard;
 
   beforeEach(() => {

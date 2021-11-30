@@ -30,6 +30,17 @@ export class ApodService {
   }
 
   private doRequest(date?: string): void {
+    let observer = {
+      next: (data: any) => {
+        this.apod = data;
+        this.apodArray.push(data);
+        this.apodArray$.next(this.apodArray);
+        console.log(data);
+      },
+      error: (error: any) => { console.log(error); },
+      complete: () => { console.log("complete"); }
+    };
+
     if (date) {
       this.http.get(`https://api.nasa.gov/planetary/apod?api_key=${this.APIKEY}&date=${date}`)
         .subscribe(data => {
@@ -38,16 +49,7 @@ export class ApodService {
           this.apodArray$.next(this.apodArray);
         });
     } else {
-      this.http.get(`https://api.nasa.gov/planetary/apod?api_key=${this.APIKEY}`).subscribe(
-        data => {
-          this.apod = data;
-          this.apodArray.push(data);
-          this.apodArray$.next(this.apodArray);
-          console.log(data);
-        }, error => {
-          console.log(error);
-        }
-      );
+      this.http.get(`https://api.nasa.gov/planetary/apod?api_key=${this.APIKEY}`).subscribe(observer);
     }
   }
 }

@@ -1,4 +1,35 @@
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Angular Samples</a>
+  <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+      aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavId">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/calculator" >Calculator</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/heroes" >Heroes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/apod" >Apod</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/beers" >Beers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/forms" >Forms</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- <div class="container">
   <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
     <li [ngbNavItem]="1">
       <a ngbNavLink>Calculator</a>
@@ -27,13 +58,10 @@
     <li [ngbNavItem]="5">
       <a ngbNavLink>Forms</a>
       <ng-template ngbNavContent>
-        <app-template-form></app-template-form>
+        <app-forms></app-forms>
       </ng-template>
     </li>
   </ul>
   
   <div [ngbNavOutlet]="nav" class="mt-2"></div>
-</div>
-
-
-
+</div> -->

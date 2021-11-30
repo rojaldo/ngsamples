@@ -1,0 +1,26 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <label for="">Name</label>
+    <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder=""
+        formControlName="name">
+    <label for="">Description</label>
+    <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder=""
+        formControlName="description">
+    <label for="">Alter Ego</label>
+    <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder=""
+        formControlName="alterEgo">
+    <button type="submit" class="btn btn-primary mt-3" [disabled]="!profileForm.valid">Submit</button>
+</form>
+<!-- 
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <label>Name:
+        <input type="text" formControlName="name">
+    </label>
+    <label>Description:
+        <input type="text" formControlName="description">
+    </label>
+    <label>Alter Ego:
+        <input type="text" formControlName="alterEgo">
+    </label>
+
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form> -->

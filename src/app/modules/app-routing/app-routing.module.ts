@@ -6,6 +6,7 @@ import { CalculatorComponent } from 'src/app/components/calculator/calculator/ca
 import { FormsComponent } from 'src/app/components/forms/forms/forms.component';
 import { HeroesComponent } from 'src/app/components/heroes/heroes/heroes.component';
 import { PageNotFoundComponent } from 'src/app/components/page-not-found/page-not-found.component';
+import { TrivialComponent } from 'src/app/components/trivial/trivial/trivial.component';
 import { YourGuard } from 'src/app/guards/your.guard';
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'apod', component: ApodComponent },
   { path: 'beers', component: BeersComponent },
   { path: 'forms', component: FormsComponent, canActivate: [YourGuard] },
-  { path: '', redirectTo: '/forms', pathMatch: 'full' },
+  { path: 'trivial', component: TrivialComponent },
+  { path: '', redirectTo: '/trivial', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 
 ]; // sets up routes constant where you define your routes

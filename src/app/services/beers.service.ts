@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observer } from 'rxjs';
 import { Beer } from 'src/model/beer';
 
 @Injectable()
@@ -12,18 +12,24 @@ export class BeersService {
   constructor(private http: HttpClient) { }
 
   getBeers(): void {
-    this.http.get<any[]>('https://api.punkapi.com/v2/beers').subscribe(
-      data => {
-        let tmp = data;
-        tmp.forEach(element => {
+    const observer: Observer<any> = {
+      next: (beers: any[]) => {
+        let tmp = beers;
+        tmp.forEach((element: any) => {
           this.beers.push(new Beer(element.name, element.tagline, element.description, element.abv, element.image_url));
         });
         this.beers$.next(this.beers);
-        console.log(data);
-      }, error => {
+        console.log(tmp);
+      }, 
+      error: error => {
         console.log(error);
+      }, 
+      complete: () => {
+        console.log('completed');
       }
-    );
+    };
+
+    this.http.get<any[]>('https://api.punkapi.com/v2/beers').subscribe(observer);
   }
 
 }

@@ -1,23 +1,26 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeroesService } from 'src/app/services/heroes.service';
+import { Hero } from 'src/model/hero';
 
 import { HeroesComponent } from './heroes.component';
 
 describe('HeroesComponent', () => {
   let component: HeroesComponent;
   let fixture: ComponentFixture<HeroesComponent>;
+  let service: HeroesService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeroesComponent ],
+      declarations: [HeroesComponent],
       providers: [HeroesService],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HeroesComponent);
     component = fixture.componentInstance;
+    service = fixture.debugElement.injector.get(HeroesService);
     fixture.detectChanges();
   });
 
@@ -26,6 +29,8 @@ describe('HeroesComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    component.addHero({} as Hero);
+    expect(component.heroes.length).toBeFalse();
   });
+
 });

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Card } from 'src/model/card';
 
 @Component({
@@ -9,6 +9,8 @@ import { Card } from 'src/model/card';
 export class TrivialCardComponent implements OnInit {
 
   @Input() card: Card = new Card();
+  @Output() onAnswerEvent = new EventEmitter<boolean>();
+
   classes: string[] = [];
 
   constructor() { }
@@ -23,6 +25,7 @@ export class TrivialCardComponent implements OnInit {
   onAnswer(answer: string) {
     this.card.responded = true;
     this.card.rightAnswered = (answer === this.card.correctAnswer);
+    this.onAnswerEvent.emit(this.card.rightAnswered);
     this.card.userAnswer = answer;
     this.classes = [];
     for (const answer of this.card.answers) {

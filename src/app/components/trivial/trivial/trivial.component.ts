@@ -10,6 +10,11 @@ import { Card } from 'src/model/card';
 export class TrivialComponent implements OnInit {
 
   cards: Card[] = [];
+  score = 0;
+
+  throttle = 300;
+  scrollDistance = 1;
+  scrollUpDistance = 2;
 
   constructor(private service: TrivialService) { }
 
@@ -18,6 +23,18 @@ export class TrivialComponent implements OnInit {
       this.cards = cards;
       console.log(cards);
     });
+    this.service.getCards();
+  }
+
+  handleResult(rightAnswer: boolean) {
+    if (rightAnswer) {
+      this.score += 2;
+    } else {
+      this.score -= 1;
+    }
+  }
+
+  onScrollDown() {
     this.service.getCards();
   }
 

@@ -31,6 +31,7 @@ import { AppRoutingModule } from './modules/app-routing/app-routing.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TrivialComponent } from './components/trivial/trivial/trivial.component';
 import { TrivialCardComponent } from './components/trivial/trivial-card/trivial-card.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { TrivialCardComponent } from './components/trivial/trivial-card/trivial-
     YouTubePlayerModule,
     NgxSliderModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    InfiniteScrollModule
   ],
   providers: [
     CalculatorService,
